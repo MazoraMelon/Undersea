@@ -1,114 +1,124 @@
 <head>
-  <meta charset="UTF-8">
-<script>
-//var password = prompt("What is the password?");
-const url = "https://script.google.com/macros/s/AKfycby3q9T41jdmUYcLz69X_oeTUkb67RI1Z-EIHyx7e99AMMztryksFZ5OivC8w0ok4rdgqg/exec?action=getOrders"
-// Fetch data from the URL
-fetch(url)
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    return response.json();
-  })
-  .then(data => {
-    // Access the fetched data and create order elements
-    const ordersContainer = document.getElementById('ordersContainer');
+    <meta charset="UTF-8">
+  <script>
+  //var password = prompt("What is the password?");
+  const url = "https://script.google.com/macros/s/AKfycby3q9T41jdmUYcLz69X_oeTUkb67RI1Z-EIHyx7e99AMMztryksFZ5OivC8w0ok4rdgqg/exec?action=getOrders"
+  // Fetch data from the URL
+  fetch(url)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
+      // Access the fetched data and create order elements
+      const ordersContainer = document.getElementById('ordersContainer');
+  
+      data.forEach(orderData => {
+        const newOrder = document.createElement('div');
+        newOrder.classList.add('order');
+  
+        newOrder.innerHTML = `
+        <div class="buttons">
+            <button class="button completed">✔</button>
+                <button class="button edit">✎</button>
+          </div>    
+          <h2>${orderData.Type} Order</h2>
+          <b>
+          <p class="Product">Product: ${orderData.Product}</p>
+          <p class="Price">${orderData.Currency}: ${orderData.Price}</p>
+          <p class="Customer">${orderData.Customer}</p>
+          <p class="Exchanged">Paid: ${orderData.Exchanged}</p>
+          <Other Parts>
 
-    data.forEach(orderData => {
-      const newOrder = document.createElement('div');
-      newOrder.classList.add('order');
-
-      newOrder.innerHTML = `
-        <h2>${orderData.Type} Order</h2>
-        
-        <p class="Product">Product: ${orderData.Product}</p>
-        <p class="Currency">Currency: ${orderData.Currency}</p>
-        <p class="Price">Price: ${orderData.Price}</p>
-        <p class="Customer">${orderData.Customer}</p>
-        <p class="Exchanged">Paid: ${orderData.Exchanged}</p>
-        <Other Parts>
-        <button class="button edit">Edit</button>
-        <button class="button">Save</button>
-        <p class="OrderID"><b>#${orderData.OrderID}</b></p>
-      `;
-
-      // Append the new order div to the container
-      ordersContainer.appendChild(newOrder);
+          <p class="OrderID"><b>#${orderData.OrderID}</b></p>
+          </b>
+        `;
+  
+        // Append the new order div to the container
+        ordersContainer.appendChild(newOrder);
+      });
+    })
+    .catch(error => {
+      // Handle errors here
+      console.error('There was a problem with the fetch operation:', error);
     });
-  })
-  .catch(error => {
-    // Handle errors here
-    console.error('There was a problem with the fetch operation:', error);
-  });
-
   
-
-</script>
-
-
-
-
-
-  <title>Undersea Dashboard</title>
-
+    
   
-
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,200;9..40,700&display=swap">
-</head>
-<body>
-  <header>
-    <h1>UNDERSEA TECH V0.31</h1>
-  </header>
-
-
-
-  <main id="ordersContainer"></main>
-<style>
-  body {
-  background-color: #1f1f1f;
-  color: #fff;
-  font-family: 'DM Sans', sans-serif;
-}
-h1 {
-  color: #7dc4ff;
-}
-h2 {
-  color: #7dc4ff;
-}
-.order{
-  border: 2px solid #7dc4ff;
-  width: 200px;
-  border-radius: 10px;
-  padding: 10px;
-  background-color: #1f1f1f;
-  margin: 10px;
-}
-.customer {
-  color: #7289da;
-}
-.price {
-  color: rgb(151, 255, 151);
-}
-main {
-  display: flex;
-  width: 90vw;
-}
-.button {
-  background-color: #7dc4ff;
-  border: none;
-  border-radius: 100px;
-  color: white;
-  padding: 5px;
-  font-weight: 600;
-  transition: all;
-  transition-duration: 0.2s;
-}
-.button:hover {
-  background-color: rgb(0, 247, 255);
-  color: rgb(78, 78, 78);
-}
-</style>
-  <!-- Additional sections and content for your site go here -->
-
-</body>
+  </script>
+  
+  
+  
+  
+  
+    <title>Undersea Dashboard</title>
+  
+    
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,200;9..40,700&display=swap">
+  </head>
+  <body>
+    <header>
+      <h1>UNDERSEA TECH V0.31</h1>
+    </header>
+  
+  
+  
+    <main id="ordersContainer"></main>
+  <style>
+    body {
+    background-color: #1f1f1f;
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+  }
+  h1 {
+    color: #7dc4ff;
+  }
+  h2 {
+    color: #7dc4ff;
+  }
+  .order{
+    border: 2px solid #7dc4ff;
+    width: 300px;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #1f1f1f;
+    margin: 10px;
+  }
+  .customer {
+    color: #7289da;
+  }
+  .price {
+    color: rgb(151, 255, 151);
+  }
+  main {
+    display: flex;
+    width: 90vw;
+  }
+  .button {
+    background-color: #7dc4ff;
+    border: none;
+    border-radius: 100px;
+    color: white;
+    padding: 5px;
+    font-weight: 600;
+    float: right;
+    margin-left: 3px;
+    transition: all;
+    transition-duration: 0.2s;
+    transition: all 0.1s;
+    color: rgb(78, 78, 78);
+    width: 40px;
+  }
+  .button:hover {
+    transform: translateY(-3px);
+  }
+  .completed {  
+    background-color: lightgreen;
+  }
+  </style>
+    <!-- Additional sections and content for your site go here -->
+  
+  </body>
