@@ -1,8 +1,8 @@
 <head>
   <meta charset="UTF-8">
 <script>
-var password = prompt("What is the password?")
-const url = "https://script.google.com/macros/s/AKfycby3q9T41jdmUYcLz69X_oeTUkb67RI1Z-EIHyx7e99AMMztryksFZ5OivC8w0ok4rdgqg/exec?action=getOrders"
+var password = prompt("What is the password?");
+const url = "https://script.google.com/macros/s/AKfycby3q9T41jdmUYcLz69X_oeTUkb67RI1Z-EIHyx7e99AMMztryksFZ5OivC8w0ok4rdgqg/exec?action=getOrders&password=" + password;
 // Fetch data from the URL
 fetch(url)
   .then(response => {
