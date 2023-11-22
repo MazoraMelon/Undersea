@@ -21,7 +21,7 @@ fetch(url)
 
       newOrder.innerHTML = `
         <h2>${orderData.Type} Order</h2>
-        <p class="OrderID">Order Number: <b>#${orderData.OrderID}</b></p>
+        
         <p class="Product">Product: ${orderData.Product}</p>
         <p class="Currency">Currency: ${orderData.Currency}</p>
         <p class="Price">Price: ${orderData.Price}</p>
@@ -30,6 +30,7 @@ fetch(url)
         <Other Parts>
         <button class="button edit">Edit</button>
         <button class="button">Save</button>
+        <p class="OrderID"><b>#${orderData.OrderID}</b></p>
       `;
 
       // Append the new order div to the container
