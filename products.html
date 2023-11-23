@@ -15,7 +15,7 @@
       // Access the fetched data and create order elements
       const ordersContainer = document.getElementById('productsContainer');
 
-      data.forEach(orderData => {
+      data.forEach(productData => {
         const newOrder = document.createElement('div');
         newOrder.classList.add('product');
 
@@ -24,14 +24,14 @@
             <button class="button completed">✔</button>
                 <button class="button edit">✎</button>
           </div>  
-          <h2 class="ProductName">Product: ${orderData.Product}</h2>  <b>
-          <p>${orderData.Type} Order</p>
-          <p class="Price">${orderData.Currency}: ${orderData.Price}</p>
-          <p class="Customer">${orderData.Customer}</p>
-          <p class="Exchanged">Paid: ${orderData.Exchanged}</p>
+          <h2 class="ProductName">Product: ${productData.Product}</h2>  <b>
+          <p>${productData.Type} Order</p>
+          <p class="Price">${productData.Currency}: ${productData.Price}</p>
+          <p class="Customer">${productData.Customer}</p>
+          <p class="Exchanged">Paid: ${productData.Exchanged}</p>
           <Other Parts>
 
-          <p class="OrderID"><b>#${orderData.OrderID}</b></p>
+          <p class="ProductID"><b>#${productData.ProductID}</b></p>
           </b>
         `;
 
